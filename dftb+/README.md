@@ -15,8 +15,10 @@ Download the release package from the link below. At this time, DFTB+ v21.2 is t
 ```bash
 wget https://github.com/dftbplus/dftbplus/releases/download/21.2/dftbplus-21.2.tar.xz
 tar xvf dftbplus-21.2.tar.xz 
+cd dftbplus-21.2
+./utils/get_opt_externals
 ```
-
+>*NOTE: Documentation says that the stable release already contains the external components but no they don't*
 
 ### Source files from github (optional method)
 Clone the public git repository and download all license compatible optional external components.
@@ -27,7 +29,7 @@ cd dftbplus
 ./utils/get_opt_externals
 ```
 
-## II. Compilation
+## II. Preparing requirements
 
 ### Activate pre-requisite modules
 This part is specific to the smith cluster's environment modules. 
@@ -46,21 +48,57 @@ Currently Loaded Modulefiles:
   1) intel/2020.2.254      2) intelmpi/2020.2.254   3) cmake/3.18.3
 ```
 
+### Options for non-smith installation
+
 If there is a need to compile this from scratch or on a different cluster/pc, it basically needs the following:
 
 1. Intel compilers, MPI and MKL (all included in oneapi)
 2. cmake v3.16 or newer
 3. Python (version >= 3.2) for the source preprocessor
 
-### Configure
+## III. Configure, build and test
+In this section we will use a custom installer script to help you. Feel free to browse the script to get the exact compilation commands implemented. 
 
+I have prepared two installer scripts that corresponds to the two MPI paralleization techniques that can be emplyed. 
 
+1. `run_intel_omp` - uses OpenMPI link
+2. `run_intel_mpi` - uses MPI link
 
+In the following section, I will use `run_intel_mpi` for demonstration.
+
+> *Note: As of the moment, both installation have not yet rigourously tested*
+
+### Download the script
 ```bash
-cd dftbplus-21.2/
-suffix='intel'
-option='FC=mpiifort CC=mpiicc'
-builddir="${suffix}_build"
-cmake_opt="-DCMAKE_INSTALL_PREFIX=${builddir}/bin -DWITH_MPI=TRUE -DWITH_OMP=FALSE -DTEST_MPI_PROCS=6"
-srcdir="./"
+# Go to DFTB+ directory
+cd dftbplus-21.2/ 
+# Download script
+wget https://raw.githubusercontent.com/kimrojas/Utility-Collection/main/dftb%2B/run_intelmpi
+# Enable execution 
+chmod +x run_intelmpi
 ```
+
+### Run the script
+```bash
+# RUN ALL
+# ./run_intelmpi config && ./run_intelmpi build && ./run_intelmpi test
+# Run configuration protocol
+./run_intelmpi config  
+# Run build protocol
+./run_intelmpi build
+# Run test protocol
+./run_intelmpi test
+```
+
+
+
+## Known issues
+Here are some known issues when `./run_intelmpi build` is invoked. I honestly don't know what is happening but everything seems to work well.
+
+```
+warning #6843: A dummy argument with an explicit INTENT(OUT) declaration is not given an explicit value.
+
+remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit
+descriptor is 'W>=D+7'.
+```
+

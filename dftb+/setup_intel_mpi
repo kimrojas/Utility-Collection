@@ -6,15 +6,12 @@
 # 3. ./run_local_intel_mpi test
 # This is ust configures, builds and test the build
 
-
-
 INP=$1
 suffix='intelmpi'
 option='FC=mpiifort CC=mpiicc'
 builddir="${suffix}_build"
-cmake_opt="-DCMAKE_INSTALL_PREFIX=${builddir}/bin -DWITH_MPI=TRUE -DWITH_OMP=FALSE -DTEST_MPI_PROCS=4"
+cmake_opt="-DCMAKE_INSTALL_PREFIX=${builddir}/install_directory -DWITH_OMP=FALSE -DWITH_MPI=TRUE -DTEST_MPI_PROCS=2"
 srcdir="./"
-
 
 if [ $INP == 'config' ]
 then
@@ -29,9 +26,13 @@ then
 elif [ $INP == 'test' ]
 then
     cd $builddir
-    command="ctest -j4 | tee ./$builddir/test_out_$suffix"
+    command="ctest -j4 | tee test_out_$suffix"
     eval $command
     cd ..
+elif [ $INP == 'install' ]
+then
+    command="cmake --install $builddir | tee ./$builddir/install_out_$suffix"
+    eval $command
 else
     echo "Wrong input. Choose 'config', 'build' or 'test'"
 fi
