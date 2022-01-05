@@ -45,7 +45,7 @@ Confirm that it is loaded using the `module list` command.
 *EXPECTED OUTPUT:*
 ```bash
 Currently Loaded Modulefiles:
-  1) intel/2020.2.254      2) intelmpi/2020.2.254   3) cmake/3.18.3
+  1) intel/2020.2.254      2) intelmpi/2020.2.254   3) cmake/3.18.3          4) python/3.8
 ```
 
 ### Options for non-smith installation
@@ -61,8 +61,8 @@ In this section we will use a custom installer script to help you. Feel free to 
 
 I have prepared two installer scripts that corresponds to the two MPI paralleization techniques that can be emplyed. 
 
-1. `run_intel_omp` - uses OpenMPI link
-2. `run_intel_mpi` - uses MPI link
+1. `setup_intel_omp` - uses OpenMPI link
+2. `setup_intel_mpi` - uses MPI link
 
 In the following section, I will use `run_intel_mpi` for demonstration.
 
