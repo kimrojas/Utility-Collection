@@ -21,7 +21,7 @@ This will download all license compatible optional external components. These in
 
 ## Compilation
 
-### **Activate pre-requisite modules** 
+### Activate pre-requisite modules
 This part is specific to the smith cluster's environment modules. 
 
 ```bash
