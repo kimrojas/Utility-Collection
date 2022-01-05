@@ -75,7 +75,7 @@ cd dftbplus-21.2/
 # Download script
 wget https://raw.githubusercontent.com/kimrojas/Utility-Collection/main/dftbplus/setup_intel_mpi
 # Enable execution 
-chmod +x run_intelmpi
+chmod +x setup_intel_mpi
 ```
 
 ### Run the script
@@ -83,11 +83,13 @@ chmod +x run_intelmpi
 # RUN ALL
 # ./run_intelmpi config && ./run_intelmpi build && ./run_intelmpi test
 # Run configuration protocol
-./run_intelmpi config  
+./setup_intel_mpi config  
 # Run build protocol
-./run_intelmpi build
+./setup_intel_mpi build
 # Run test protocol
-./run_intelmpi test
+./setup_intel_mpi test
+# If test results are fine, run install
+./setup_intel_mpi install
 ```
 
 
