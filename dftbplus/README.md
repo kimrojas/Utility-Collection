@@ -73,7 +73,7 @@ In the following section, I will use `run_intel_mpi` for demonstration.
 # Go to DFTB+ directory
 cd dftbplus-21.2/ 
 # Download script
-wget https://raw.githubusercontent.com/kimrojas/Utility-Collection/main/dftb%2B/setup_intel_mpi
+wget https://raw.githubusercontent.com/kimrojas/Utility-Collection/main/dftbplus/setup_intel_mpi
 # Enable execution 
 chmod +x run_intelmpi
 ```
