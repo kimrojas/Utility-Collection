@@ -8,7 +8,7 @@
 # This is ust configures, builds and test the build
 
 INP=$1
-suffix='intelmpi'
+suffix='intelomp'
 option='FC=mpiifort CC=mpiicc'
 builddir="${suffix}_build"
 cmake_opt="-DCMAKE_INSTALL_PREFIX=${builddir}/install_directory -DTEST_OMP_THREADS=2"

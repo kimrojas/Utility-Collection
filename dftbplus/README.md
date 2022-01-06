@@ -94,11 +94,71 @@ chmod +x setup_intel_mpi
 
 ## IV. Usage
 
-For example input files you can download an already prepared archive.   
-> Note: The examples archive is based on the recipe given by the dftb+ team but I've predownloaded the pre-requisites due some problem with smith decompressing issues.
+### Setup installation 
 
+The binary files will be located in `dftbplus-21.2/intelmpi_build/install_directory/bin`.  
+Simply add this to your environment by using 
+```bash
+## ASSUMING YOU ARE IN THE SOURCE DIRECTORY
+## Assuming ~/.bashrc is your default startup environment
+dftb_bin=$(realpath intelmpi_build/install_directory/bin)
+echo "export PATH=$PATH:$dftb_bin" >> ~/.bashrc
+source ~/.bashrc
 
+# Check if it was successfully located
+which dftb+
+# Expected output:
+# [krojas@smith2 dftbplus-21.2]$ which dftb+
+# ~/DFTB/PRIMARY/dftbplus-21.2/intelmpi_build/install_directory/bin/dftb+
+```
 
+### Using dftb+
+
+#### Download example files
+For example input files you can download an already prepared archive here.   
+> Note 1: The examples archive is based on the [recipe given by the dftb+ team](https://dftbplus-recipes.readthedocs.io/en/latest/introduction.html#) but I've predownloaded the pre-requisites due some problem with smith decompressing issues.
+> Note 2: the `mpirun` cannot be run on smith. Please use `rsh` to login to a compute node to try the examples (e.g. `rsh xs15` to login to ). 
+```bash
+# Download and extract example folder
+wget https://github.com/kimrojas/Utility-Collection/raw/main/dftbplus/usage/example.tar.gz && tar zxvf example.tar.gz
+```
+
+#### Running dftb+
+```bash
+# The following instructions assumes that you are logged in to a mpirun-viable machine (e.g. the compute node of smith cluster)
+cd example/moleculardynamics/initialstructure
+module load intel/2020.2.254 intelmpi/2020.2.254
+
+# Do a serial run
+dftb+ > output
+grep 'MPI processes' output 
+#|| MPI processes:               1
+grep BLACS output 
+#|| BLACS orbital grid size:     1 x 1
+#|| BLACS atom grid size:        1 x 1
+
+# Do a parallel run
+mpirun dftb+ > output
+grep 'MPI processes' output 
+#|| MPI processes:               16
+grep BLACS output 
+#|| BLACS orbital grid size:     4 x 4
+#|| BLACS atom grid size:        2 x 2
+
+# Do a parallel run with controlled num of processes
+mpirun -n 8 dftb+ > output
+grep 'MPI processes' output 
+#|| MPI processes:               8
+grep BLACS output 
+#|| BLACS orbital grid size:     2 x 4
+#|| BLACS atom grid size:        2 x 2
+```
+
+#### Job script
+
+```bash
+TO BE CONTINUED 
+```
 
 
 
