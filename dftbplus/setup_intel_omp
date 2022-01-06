@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Recipe needs to run in the following order:
+# 1. ./setup_intel_mpi config
+# 2. ./setup_intel_mpi build
+# 3. ./setup_intel_mpi test
+# 4. ./setup_intel_mpi install
+# This is ust configures, builds and test the build
+
+INP=$1
+suffix='intelmpi'
+option='FC=mpiifort CC=mpiicc'
+builddir="${suffix}_build"
+cmake_opt="-DCMAKE_INSTALL_PREFIX=${builddir}/install_directory -DTEST_OMP_THREADS=2"
+srcdir="./"
+
+if [ $INP == 'config' ]
+then
+    rm -rf $builddir
+    mkdir $builddir
+    command="$option cmake $cmake_opt -B $builddir $srcdir | tee ./$builddir/config_out_$suffix"
+    eval $command
+elif [ $INP == 'build' ]
+then
+    command="cmake --build $builddir -- -j  | tee ./$builddir/build_out_$suffix"
+    eval $command
+elif [ $INP == 'test' ]
+then
+    cd $builddir
+    command="ctest -j4 | tee test_out_$suffix"
+    eval $command
+    cd ..
+elif [ $INP == 'install' ]
+then
+    command="cmake --install $builddir | tee ./$builddir/install_out_$suffix"
+    eval $command
+else
+    echo "Wrong input. Choose 'config', 'build' or 'test'"
+fi

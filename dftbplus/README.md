@@ -80,7 +80,7 @@ chmod +x setup_intel_mpi
 
 ### Run the script
 ```bash
-# RUN ALL
+# If you don't want to wait, RUN ALL
 # ./run_intelmpi config && ./run_intelmpi build && ./run_intelmpi test
 # Run configuration protocol
 ./setup_intel_mpi config  
@@ -91,6 +91,14 @@ chmod +x setup_intel_mpi
 # If test results are fine, run install
 ./setup_intel_mpi install
 ```
+
+## IV. Usage
+
+For example input files you can download an already prepared archive.   
+> Note: The examples archive is based on the recipe given by the dftb+ team but I've predownloaded the pre-requisites due some problem with smith decompressing issues.
+
+
+
 
 
 
