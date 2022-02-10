@@ -2,7 +2,7 @@
 Collection of utility scripts, instructions and many more!
 
 
-## Table of content
+## Table of contents
 1. [DFTB+](###I.-DFTB+)
 2. [Core Utilities](###II.-Core-Utilities)
 3. [Smith Utilities](###III.-Smit-Utilities)
@@ -14,7 +14,7 @@ Collection of utility scripts, instructions and many more!
 
 ### II. Core Utilities 
 - `coreutils/`
-- This folder contains instructions on how to compile and use custom `cp` and `mv`. The particular 
+- This folder contains instructions on how to compile and use custom `cp` and `mv`. Theses particular custom commands have progress bar with them which is useful. 
 
 ### III. Smith Utilities
 -  `smith_util/`

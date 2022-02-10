@@ -4,6 +4,32 @@ This document is meant to reproduce my installation of DFTB+ in smith cluster. T
 
 > **STATUS**: Basic installation only, no advanced solvers yet (e.g. ELSI, MAGMA)
 
+---
+## FAST SETUP (TL;DR) - easy as 1,2,3
+1. Download `install_script.py`
+2. Follow the following commands (on login node with internet access)
+```bash
+# Load enviroment
+$ module load cmake/3.18.3
+$ module load intel/2020.2.254
+$ module load intelmpi/2020.2.254
+$ module load python/3.8
+
+# Run automated installation script
+$ python install_script.py
+```
+3. export environment PATH and variables based on the script's last output. 
+4. Download slakos files from https://dftb.org/parameters/download/all-sk-files
+---
+
+## ADVANCED DETAILS
+
+> UNDER CONSTRUCTION: This part is under construction
+
+
+
+
+
 ## I. Obtaining Source Code
 
 ### Source files from website download page
@@ -39,7 +65,17 @@ module load cmake/3.18.3
 module load intel/2020.2.254
 module load intelmpi/2020.2.254
 module load python/3.8
+
+module load cmake/3.18.3 intel/2020.2.254 intelmpi/2020.2.254 python/3.8
 ``` 
+
+job script
+```
+module load cmake/3.18.3 intel/2020.2.254 intelmpi/2020.2.254 python/3.8
+source activate 
+conda activate dftb
+```
+
 
 Confirm that it is loaded using the `module list` command.  
 *EXPECTED OUTPUT:*
@@ -55,6 +91,15 @@ If there is a need to compile this from scratch or on a different cluster/pc, it
 1. Intel compilers, MPI and MKL (all included in oneapi)
 2. cmake v3.16 or newer
 3. Python (version >= 3.2) for the source preprocessor
+
+
+### Prepare python
+For PYTHON API compatability
+```bash
+conda create -n dftb -c conda-forge python ase 
+source activate
+conda activate dftb
+```
 
 ## III. Configure, build and test
 In this section we will use a custom installer script to help you. Feel free to browse the script to get the exact compilation commands implemented. 
