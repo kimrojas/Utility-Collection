@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# USAGE: ./KurtAssist_conda <custom-conda-env-name (optional)>
+# custom conda environment name is optional(DEFAULT=DFTBplus-env)
+
+# Detect if any change to conda environment name invoked
+if [ -z "$1" ]; then
+    CONDA_ENV_NAME='DFTBplus-env'
+    echo Using DEFAULT environment name: \" $CONDA_ENV_NAME \"
+else
+    CONDA_ENV_NAME=$1
+    echo Using CUSTOM environment name: \" $CONDA_ENV_NAME \"
+fi
+
+# Download yaml file
+
+
+# Create conda package from yaml
+# Download basic
+# conda create 0c
