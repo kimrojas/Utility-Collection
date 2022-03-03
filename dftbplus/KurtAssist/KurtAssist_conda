@@ -17,15 +17,8 @@ SEARCH_TAG='env_template'
 sed -i 's/$SEARCH_TAG/$CONDA_ENV_NAME/' KurtAssist_envTemplate.yml
 
 # Run conda env creator
+conda env create -f KurtAssist_envTemplate.yml
 
-
-
-# Create conda package from yaml
-# Download basic
-# conda create 0c
-
-https://github.com/kimrojas/Utility-Collection/tree/main/dftbplus/KurtAssist
-
-svn checkout https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/KurtAssist
-
-svn export https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/KurtAssist
+# Activate new conda env
+# This is the right way to activate a conda environment
+source activate $CONDA_ENV_NAME
