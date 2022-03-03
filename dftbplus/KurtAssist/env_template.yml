@@ -1,4 +1,4 @@
-name: test_gofee
+name: env_template
 channels:
   - conda-forge
   - /home/krojas/intel/oneapi/conda_channel

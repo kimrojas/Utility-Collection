@@ -13,6 +13,10 @@ else
 fi
 
 # Download yaml file
+ENV_TEMPLATE='https://raw.githubusercontent.com/kimrojas/Utility-Collection/main/dftbplus/KurtAssist/env_template.yml'
+wget $ENV_TEMPLATE
+
+
 
 
 # Create conda package from yaml
