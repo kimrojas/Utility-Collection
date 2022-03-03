@@ -14,7 +14,7 @@ fi
 
 # Edit conda environment yml template
 SEARCH_TAG='env_template'
-sed -i 's/$SEARCH_TAG/$CONDA_ENV_NAME/' KurtAssist_envTemplate.yml
+sed -i "s/$SEARCH_TAG/$CONDA_ENV_NAME/" KurtAssist_envTemplate.yml
 
 # Run conda env creator
 conda env create -f KurtAssist_envTemplate.yml
@@ -22,3 +22,6 @@ conda env create -f KurtAssist_envTemplate.yml
 # Activate new conda env
 # This is the right way to activate a conda environment
 source activate $CONDA_ENV_NAME
+
+
+
