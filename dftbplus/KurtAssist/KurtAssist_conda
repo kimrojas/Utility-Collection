@@ -22,3 +22,9 @@ wget $ENV_TEMPLATE
 # Create conda package from yaml
 # Download basic
 # conda create 0c
+
+https://github.com/kimrojas/Utility-Collection/tree/main/dftbplus/KurtAssist
+
+svn checkout https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/KurtAssist
+
+svn export https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/KurtAssist
