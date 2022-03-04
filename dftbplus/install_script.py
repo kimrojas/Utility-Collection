@@ -104,6 +104,7 @@ logfile.close()
 process("SHOWING IMPORTANT PATHS")
 logfile = open("buildlog.path",'w')
 paths = []
+paths.append(f"BASE DIRECTORY = {installdir_full}")
 paths.append(f"{'BIN directory':25}  |  {'add to PATH':40}  |  {installdir_full+'/bin'}") 
 paths.append(f"{'LIB directory':25}  |  {'add to LD_LIBRARY_PATH':40}  |  {installdir_full+'/lib64'}") 
 paths.append(f"{'LIB file':25}  |  {'save to an environment variable (ex.DFTB_LIB)':40}  |  {installdir_full+'/lib64/libdftbplus.so'}") 
