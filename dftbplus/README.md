@@ -5,7 +5,8 @@ This document is meant to reproduce my installation of DFTB+ in smith cluster. T
 > **STATUS**: Basic installation only, no advanced solvers yet (e.g. ELSI, MAGMA)
 
 ---
-## FAST SETUP (TL;DR) - easy as 1,2,3
+## Easy Setup
+
 1. Download `install_script.py`
 2. Follow the following commands (on login node with internet access)
 ```bash
@@ -28,25 +29,22 @@ svn export https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/install
 # Run the installation script
 python install_script.py
 
-# Download Installation script
-
-# Run automated installation script
-python install_script.py
-
 ##### (OPTIONAL) Create module files for simplicity of using `module load` ####
 # Download the easy script
 svn export https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/install_module.py
 # Run script
 python install_module.py
 # Add the module file to the environment so environment modules can detect it
-echo "module use --append $(pwd)/modulefiles"
+echo "module use --append $(pwd)/modulefiles" >> ~/.bashrc
 
 # - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - -
 #                       DONE - CONGRATULATIONS !!!
 # - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ```
-3. export environment PATH and variables based on the script's last output. 
+3. Prepare the environment Path and Variables based on the install_script's last
+output. If you used the module files preparation script, then you can simply use
+`module load dftbplus`.
 4. Download slakos files from https://dftb.org/parameters/download/all-sk-files
 ---
 
