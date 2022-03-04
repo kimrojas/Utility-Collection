@@ -4,7 +4,7 @@ import sys
 import shutil
 
 # Get installation directory name
-with open('dftbplus-21.2', 'r') as f:
+with open('dftbplus-21.2/buildlog.path', 'r') as f:
     lines = f.read().splitlines()
     
 for line in lines:
