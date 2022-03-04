@@ -62,7 +62,8 @@ You simply add the following lines to your script before invoking DFTB+ commands
 
 ```bash
 ## DFTB+ Initialization
-dftbplus/21.2_OpenMP
+module load dftbplus/21.2_OpenMP
+source activate DFTBplus
 ```
 
 ## ADVANCED DETAILS
