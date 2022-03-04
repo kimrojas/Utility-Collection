@@ -25,6 +25,7 @@ print("    "+tarfile+" downloaded")
 process("EXTRACTING FILE")
 sp.run(f'tar xf {tarfile}', shell=True)
 print("    "+tarfile+" extracted to "+srcdir)
+os.rmdir(tarfile)
 
 
 # Prepare source directory

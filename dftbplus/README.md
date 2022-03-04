@@ -10,10 +10,25 @@ This document is meant to reproduce my installation of DFTB+ in smith cluster. T
 2. Follow the following commands (on login node with internet access)
 ```bash
 # Load enviroment
-$ module load cmake/3.18.3
-$ module load intel/2020.2.254
-$ module load intelmpi/2020.2.254
-$ module load python/3.8
+module load cmake/3.18.3
+module load intel/2020.2.254
+module load intelmpi/2020.2.254
+module load python/3.8
+
+# Create a Python conda environment
+PACKAGE='python=3.8 numpy scipy ase cymem cython decorator mpi4py pytest'
+conda create --name DFTBplus -c conda-forge $PACKAGE -y
+
+# Activate the new Python conda
+source activate DFTBplus
+
+# Download the installation script
+svn export https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/install_script.py
+
+# Run the installation script
+python install_script.py
+
+# Download Installation script
 
 # Run automated installation script
 $ python install_script.py
