@@ -34,7 +34,7 @@ fullmodfile = os.path.join(moddir, modfile)
 
 
 
-modfile_str = """\
+modfile_str = '''\
 #%Module
 
 proc ModulesHelp { } {
@@ -50,21 +50,21 @@ proc ModulesHelp { } {
     puts stderr ""
     puts stderr "Details:"
     puts stderr ""
-    puts stderr "\tEnvironment variables:"
-    puts stderr "\t\tDFTB_COMMAND ${bindir}/dftb+"
-    puts stderr "\t\tDFTB_LIB     ${libdir}/libdftbplus"
+    puts stderr "   Environment variables:"
+    puts stderr "       DFTB_COMMAND ${bindir}/dftb+"
+    puts stderr "       DFTB_LIB     ${libdir}/libdftbplus"
     puts stderr ""
-    puts stderr "\tPathing:"
-    puts stderr "\t\tprepend-path PATH               ${bindir}"
-    puts stderr "\t\tprepend-path LD_LIBRARY_PATH    ${libdir}"
-    puts stderr "\t\tprepend-path LIBRARY_PATH       ${libdir}"
-    puts stderr "\t\tprepend-path CPATH              ${incdir}"
-    puts stderr "\t\tprepend-path PYTHONPATH         ${pyapi}"
-    puts stderr "\t\tprepend-path PYTHONPATH         ${pydptools}"
+    puts stderr "   Pathing:"
+    puts stderr "       prepend-path PATH               ${bindir}"
+    puts stderr "       prepend-path LD_LIBRARY_PATH    ${libdir}"
+    puts stderr "       prepend-path LIBRARY_PATH       ${libdir}"
+    puts stderr "       prepend-path CPATH              ${incdir}"
+    puts stderr "       prepend-path PYTHONPATH         ${pyapi}"
+    puts stderr "       prepend-path PYTHONPATH         ${pydptools}"
     puts stderr ""
 }
  
-module-whatis "This module prepares the dftb+ (v21.2 OpenMP) environment\n"
+module-whatis "This module prepares the dftb+ (v21.2 OpenMP) environment"
 
 module load cmake/3.18.3
 module load intel/2020.2.254
@@ -88,9 +88,9 @@ prepend-path PATH               ${bindir}
 prepend-path LD_LIBRARY_PATH    ${libdir}
 prepend-path LIBRARY_PATH       ${libdir}
 prepend-path CPATH              ${incdir}
-prepend-path PYTHONPATH         ${pyapi}"
-prepend-path PYTHONPATH         ${pydptools}"
-    """
+prepend-path PYTHONPATH         ${pyapi}
+prepend-path PYTHONPATH         ${pydptools}
+    '''
 
 
 modified_modfile_str = modfile_str.replace('<__BASEDIR__>', base_directory)
