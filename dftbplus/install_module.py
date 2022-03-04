@@ -78,7 +78,7 @@ set libdir      "${basedir}/lib64"
 set bindir      "${basedir}/bin"
 set incdir      "${basedir}/include"
 set pyapi       "${basedir}/lib/python3.8/site-packages/pythonapi-0.1-py3.8.egg"
-set pypackage   "${basedir}/lib/python3.8/site-packages"
+set pydptools   "${basedir}/lib/python3.8/site-packages"
 
 setenv DFTB_COMMAND ${bindir}/dftb+
 setenv DFTB_LIB     ${libdir}/libdftbplus
