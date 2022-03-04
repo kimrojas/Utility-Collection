@@ -31,7 +31,20 @@ python install_script.py
 # Download Installation script
 
 # Run automated installation script
-$ python install_script.py
+python install_script.py
+
+##### (OPTIONAL) Create module files for simplicity of using `module load` ####
+# Download the easy script
+svn export https://github.com/kimrojas/Utility-Collection/trunk/dftbplus/install_module.py
+# Run script
+python install_module.py
+# Add the module file to the environment so environment modules can detect it
+echo "module use --append $(pwd)/modulefiles"
+
+# - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - -
+#                       DONE - CONGRATULATIONS !!!
+# - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - -
+
 ```
 3. export environment PATH and variables based on the script's last output. 
 4. Download slakos files from https://dftb.org/parameters/download/all-sk-files

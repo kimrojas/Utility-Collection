@@ -6,7 +6,7 @@ import shutil
 # Get installation directory name
 with open('dftbplus-21.2/buildlog.path', 'r') as f:
     lines = f.read().splitlines()
-    
+
 for line in lines:
     if 'BASE DIRECTORY' in line:
         base_directory = line.split()[-1]
@@ -63,7 +63,7 @@ proc ModulesHelp { } {
     puts stderr "       prepend-path PYTHONPATH         ${pydptools}"
     puts stderr ""
 }
- 
+
 module-whatis "This module prepares the dftb+ (v21.2 OpenMP) environment"
 
 module load cmake/3.18.3
@@ -97,6 +97,6 @@ modified_modfile_str = modfile_str.replace('<__BASEDIR__>', base_directory)
 
 with open(fullmodfile, 'w') as f:
     f.write(modified_modfile_str)
-    
+
 print(f'Module file prepared !')
 print(f'File location: {fullmodfile}')
