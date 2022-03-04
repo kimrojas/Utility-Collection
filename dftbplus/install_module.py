@@ -3,7 +3,18 @@ import os
 import sys
 import shutil
 
+# Get installation directory name
+with open('dftbplus-21.2', 'r') as f:
+    lines = f.read().splitlines()
+    
+for line in lines:
+    if 'BASE DIRECTORY' in line:
+        base_directory = line.split()[-1]
+        break
 
+
+
+# Initialization for  module file
 moddir = 'modulefiles/dftbplus'
 os.makedirs(moddir, exist_ok=True)
 
@@ -17,8 +28,6 @@ else:
     raise ValueError(f'Expected maximum arguments is 1, I detected {len(sys.argv)-1}')
 
 fullmodfile = os.path.join(moddir, modfile)
-
-print(fullmodfile)
 
 
 
@@ -68,8 +77,7 @@ set basedir     <__BASEDIR__>
 set libdir      "${basedir}/lib64"
 set bindir      "${basedir}/bin"
 set incdir      "${basedir}/include"
-set pyapi       "${basedir}/lib/python3.10/site-packages/pythonapi-0.1-py3.10.egg"
-set pydptools   "${basedir}/lib/python3.10/site-packages" 
+set pypackage   "${basedir}/lib/python3.8/site-packages"
 
 setenv DFTB_COMMAND ${bindir}/dftb+
 setenv DFTB_LIB     ${libdir}/libdftbplus
@@ -79,6 +87,14 @@ prepend-path PATH               ${bindir}
 prepend-path LD_LIBRARY_PATH    ${libdir}
 prepend-path LIBRARY_PATH       ${libdir}
 prepend-path CPATH              ${incdir}
-prepend-path PYTHONPATH         ${pyapi}
-prepend-path PYTHONPATH         ${pydptools}
+prepend-path PYTHONPATH         ${pypackage}
     """
+
+
+modified_modfile_str = modfile_str.replace('<__BASEDIR__>', base_directory)
+
+with open(fullmodfile, 'w') as f:
+    f.write(modified_modfile_str)
+    
+print(f'Module file prepared !')
+print(f'File location: {fullmodfile}')
